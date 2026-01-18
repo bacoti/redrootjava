@@ -1,0 +1,29 @@
+# Robots.txt for Red Root Java Website
+# https://redrootjava.com
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yahoo! Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://redrootjava.com/sitemap.xml
+
+# Crawl-delay (optional - be polite to servers)
+Crawl-delay: 10
