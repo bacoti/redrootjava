@@ -582,6 +582,29 @@ p {
 .hero__title-highlight {
   color: var(--color-warning);
   position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.hero__title-highlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  height: 12px;
+  background-color: rgba(255, 215, 0, 0.4);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: highlight-anim 1s 0.5s forwards cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 2px;
+}
+
+@keyframes highlight-anim {
+  to {
+    transform: scaleX(1);
+  }
 }
 
 .hero__subtitle {
@@ -670,11 +693,20 @@ p {
 
 .hero__floating {
   position: absolute;
-  background: var(--color-white);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius-lg);
   padding: var(--space-md) var(--space-lg);
-  box-shadow: var(--shadow-lg);
-  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+  /* Removed default CSS float animation to allow JS parallax */
+}
+
+.hero__floating:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .hero__floating--1 {

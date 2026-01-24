@@ -747,6 +747,55 @@ const App = (() => {
   };
 
   // ============================================
+  // MOUSE PARALLAX MODULE (NEW)
+  // ============================================
+  const MouseParallax = {
+    elements: null,
+    container: null,
+
+    init() {
+      this.container = document.querySelector('.hero');
+      this.elements = document.querySelectorAll('[data-mouse-parallax]');
+
+      if (!this.container || this.elements.length === 0) return;
+
+      // Disable on mobile/touch devices
+      if (window.matchMedia('(hover: none)').matches) return;
+
+      this.bindEvents();
+    },
+
+    bindEvents() {
+      this.container.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+      this.container.addEventListener('mouseleave', () => this.resetPositions());
+    },
+
+    handleMouseMove(e) {
+      requestAnimationFrame(() => {
+        const { width, height, left, top } = this.container.getBoundingClientRect();
+        // Calculate mouse position relative to center of hero section
+        // range: -0.5 to 0.5
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        this.elements.forEach(el => {
+          const speed = parseFloat(el.getAttribute('data-mouse-parallax')) || 20;
+          const xOffset = x * speed;
+          const yOffset = y * speed;
+
+          el.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+        });
+      });
+    },
+
+    resetPositions() {
+      this.elements.forEach(el => {
+        el.style.transform = 'translate(0, 0)';
+      });
+    }
+  };
+
+  // ============================================
   // BACK TO TOP MODULE
   // ============================================
   const BackToTop = {
@@ -1169,6 +1218,7 @@ const App = (() => {
     LazyLoad.init();
     Accessibility.init();
     Parallax.init();
+    MouseParallax.init();
     BackToTop.init();
     FAQAccordion.init();
     LoadingOverlay.init();
