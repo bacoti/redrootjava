@@ -163,6 +163,7 @@ const I18n = (() => {
       'comparison.row8': 'Vitamin Tambahan',
       'comparison.row9': 'Tersertifikasi BPOM',
       'comparison.order': 'Pesan',
+      'comparison.scrollHint': 'Geser untuk melihat semua kolom',
 
       // Cookie Consent
       'cookie.title': 'Kami Menggunakan Cookies',
@@ -354,6 +355,7 @@ const I18n = (() => {
       'comparison.row8': 'Added Vitamins',
       'comparison.row9': 'BPOM Certified',
       'comparison.order': 'Order',
+      'comparison.scrollHint': 'Swipe to see all columns',
 
       // Cookie Consent
       'cookie.title': 'We Use Cookies',
@@ -449,11 +451,11 @@ const I18n = (() => {
    */
   const updateContent = () => {
     const elements = document.querySelectorAll('[data-i18n]');
-    
+
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
       const translation = t(key);
-      
+
       // Use innerHTML for keys containing <br> tags
       if (translation.includes('<br>')) {
         el.innerHTML = translation;
@@ -471,11 +473,11 @@ const I18n = (() => {
    */
   const updateSwitcherUI = () => {
     const buttons = document.querySelectorAll('.lang-switcher__btn');
-    
+
     buttons.forEach(btn => {
       const lang = btn.getAttribute('data-lang');
       const isActive = lang === currentLang;
-      
+
       btn.classList.toggle('lang-switcher__btn--active', isActive);
       btn.setAttribute('aria-pressed', isActive);
     });
@@ -510,7 +512,7 @@ const I18n = (() => {
    */
   const bindEvents = () => {
     const buttons = document.querySelectorAll('.lang-switcher__btn');
-    
+
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang');
@@ -526,7 +528,7 @@ const I18n = (() => {
           e.preventDefault();
           const newLang = currentLang === 'id' ? 'en' : 'id';
           switchLanguage(newLang);
-          
+
           // Focus the new active button
           const activeBtn = document.querySelector(`.lang-switcher__btn[data-lang="${newLang}"]`);
           if (activeBtn) activeBtn.focus();
@@ -541,11 +543,11 @@ const I18n = (() => {
   const init = () => {
     // Get saved or default language
     currentLang = getSavedLanguage();
-    
+
     // Update content and UI
     updateContent();
     updateSwitcherUI();
-    
+
     // Bind events
     bindEvents();
 

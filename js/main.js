@@ -44,7 +44,7 @@ const App = (() => {
   // ============================================
   // UTILITY FUNCTIONS
   // ============================================
-  
+
   /**
    * Debounce function to limit execution rate
    */
@@ -145,9 +145,9 @@ const App = (() => {
 
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (state.isMenuOpen && 
-            !DOM.nav.contains(e.target) && 
-            !DOM.menuToggle.contains(e.target)) {
+        if (state.isMenuOpen &&
+          !DOM.nav.contains(e.target) &&
+          !DOM.menuToggle.contains(e.target)) {
           this.closeMenu();
         }
       });
@@ -174,7 +174,7 @@ const App = (() => {
       toggleClass(DOM.menuToggle, 'menu-toggle--active');
       toggleClass(DOM.nav, 'nav--open');
       toggleClass(document.body, 'no-scroll');
-      
+
       // Update ARIA attributes
       DOM.menuToggle.setAttribute('aria-expanded', state.isMenuOpen);
     },
@@ -195,7 +195,7 @@ const App = (() => {
      */
     checkScroll() {
       const scrollY = window.scrollY;
-      
+
       if (scrollY > CONFIG.scrollThreshold && !state.isScrolled) {
         state.isScrolled = true;
         addClass(DOM.header, 'header--scrolled');
@@ -266,12 +266,12 @@ const App = (() => {
      */
     handleClick(e, link) {
       const href = link.getAttribute('href');
-      
+
       // Skip if it's just "#"
       if (href === '#') return;
-      
+
       const target = document.querySelector(href);
-      
+
       if (target) {
         e.preventDefault();
         this.scrollTo(target);
@@ -284,7 +284,7 @@ const App = (() => {
     scrollTo(target) {
       const headerHeight = DOM.header ? DOM.header.offsetHeight : 0;
       const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-      
+
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
@@ -306,9 +306,9 @@ const App = (() => {
      */
     init() {
       DOM.revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
-      
+
       if (DOM.revealElements.length === 0) return;
-      
+
       this.checkElements();
       this.bindEvents();
     },
@@ -349,11 +349,11 @@ const App = (() => {
      * Add ripple effect to button
      */
     addRippleEffect(button) {
-      button.addEventListener('click', function(e) {
+      button.addEventListener('click', function (e) {
         const rect = this.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const ripple = document.createElement('span');
         ripple.className = 'btn-ripple';
         ripple.style.cssText = `
@@ -370,11 +370,11 @@ const App = (() => {
           margin-top: -50px;
           pointer-events: none;
         `;
-        
+
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
         this.appendChild(ripple);
-        
+
         setTimeout(() => ripple.remove(), 600);
       });
     }
@@ -389,9 +389,9 @@ const App = (() => {
      */
     init() {
       const counters = document.querySelectorAll('[data-counter]');
-      
+
       if (counters.length === 0) return;
-      
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -440,9 +440,9 @@ const App = (() => {
      */
     init() {
       this.cards = document.querySelectorAll('.testimonial-card');
-      
+
       if (this.cards.length <= 1) return;
-      
+
       // Only activate slider on mobile
       if (window.innerWidth <= 768) {
         this.setupSlider();
@@ -575,10 +575,10 @@ const App = (() => {
     handleSubmit(form) {
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-      
+
       // Add your form submission logic here
       console.log('Form submitted:', data);
-      
+
       // Show success message
       this.showMessage(form, 'Thank you! We will contact you soon.', 'success');
     },
@@ -601,9 +601,9 @@ const App = (() => {
         background: ${type === 'success' ? '#d4edda' : '#f8d7da'};
         color: ${type === 'success' ? '#155724' : '#721c24'};
       `;
-      
+
       form.appendChild(messageEl);
-      
+
       setTimeout(() => messageEl.remove(), 5000);
     }
   };
@@ -617,7 +617,7 @@ const App = (() => {
      */
     init() {
       const images = document.querySelectorAll('img[data-src]');
-      
+
       if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -699,7 +699,7 @@ const App = (() => {
      */
     setupReducedMotion() {
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      
+
       const handleReducedMotion = (e) => {
         if (e.matches) {
           document.documentElement.style.setProperty('--transition-base', '0.01ms');
@@ -723,9 +723,9 @@ const App = (() => {
      */
     init() {
       this.elements = document.querySelectorAll('[data-parallax]');
-      
+
       if (this.elements.length === 0) return;
-      
+
       // Only enable parallax if user hasn't requested reduced motion
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         window.addEventListener('scroll', throttle(() => this.update(), 16));
@@ -737,7 +737,7 @@ const App = (() => {
      */
     update() {
       const scrollY = window.scrollY;
-      
+
       this.elements.forEach(element => {
         const speed = parseFloat(element.getAttribute('data-parallax')) || 0.5;
         const offset = scrollY * speed;
@@ -758,9 +758,9 @@ const App = (() => {
      */
     init() {
       this.button = document.getElementById('backToTop');
-      
+
       if (!this.button) return;
-      
+
       this.bindEvents();
       this.checkVisibility();
     },
@@ -771,7 +771,7 @@ const App = (() => {
     bindEvents() {
       // Scroll event to show/hide button
       window.addEventListener('scroll', throttle(() => this.checkVisibility(), 100));
-      
+
       // Click event to scroll to top
       this.button.addEventListener('click', () => this.scrollToTop());
     },
@@ -809,9 +809,9 @@ const App = (() => {
      */
     init() {
       this.items = document.querySelectorAll('.faq__item');
-      
+
       if (this.items.length === 0) return;
-      
+
       this.bindEvents();
     },
 
@@ -821,10 +821,10 @@ const App = (() => {
     bindEvents() {
       this.items.forEach(item => {
         const question = item.querySelector('.faq__question');
-        
+
         if (question) {
           question.addEventListener('click', () => this.toggleItem(item));
-          
+
           // Keyboard accessibility
           question.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -842,7 +842,7 @@ const App = (() => {
     toggleItem(item) {
       const isActive = item.classList.contains('faq__item--active');
       const question = item.querySelector('.faq__question');
-      
+
       // Close all other items (accordion behavior)
       this.items.forEach(otherItem => {
         if (otherItem !== item) {
@@ -853,7 +853,7 @@ const App = (() => {
           }
         }
       });
-      
+
       // Toggle current item
       if (isActive) {
         item.classList.remove('faq__item--active');
@@ -876,12 +876,12 @@ const App = (() => {
      */
     init() {
       this.overlay = document.getElementById('loadingOverlay');
-      
+
       if (!this.overlay) return;
-      
+
       // Hide overlay when page is fully loaded
       window.addEventListener('load', () => this.hide());
-      
+
       // Fallback: hide after 3 seconds max
       setTimeout(() => this.hide(), 3000);
     },
@@ -921,9 +921,9 @@ const App = (() => {
       this.banner = document.getElementById('cookieConsent');
       this.acceptBtn = document.getElementById('cookieAccept');
       this.declineBtn = document.getElementById('cookieDecline');
-      
+
       if (!this.banner) return;
-      
+
       this.bindEvents();
       this.checkConsent();
     },
@@ -935,7 +935,7 @@ const App = (() => {
       if (this.acceptBtn) {
         this.acceptBtn.addEventListener('click', () => this.accept());
       }
-      
+
       if (this.declineBtn) {
         this.declineBtn.addEventListener('click', () => this.decline());
       }
@@ -946,7 +946,7 @@ const App = (() => {
      */
     checkConsent() {
       const consent = this.getConsent();
-      
+
       if (consent === null) {
         // Show banner after a short delay
         setTimeout(() => this.show(), 2000);
@@ -1032,13 +1032,13 @@ const App = (() => {
      */
     handleExistingImages() {
       const images = document.querySelectorAll('img');
-      
+
       images.forEach(img => {
         // If image is already broken
         if (img.complete && img.naturalHeight === 0) {
           this.handleError(img);
         }
-        
+
         // Add error listener
         img.addEventListener('error', () => this.handleError(img));
       });
@@ -1049,12 +1049,12 @@ const App = (() => {
      */
     handleError(img) {
       const parent = img.parentElement;
-      
+
       // Add error class to parent if it's a product card image
       if (parent && parent.classList.contains('product-card__image')) {
         parent.classList.add('img-error');
       }
-      
+
       // Set fallback for other images
       if (!img.dataset.errorHandled) {
         img.dataset.errorHandled = 'true';
@@ -1067,7 +1067,7 @@ const App = (() => {
      */
     observeNewImages() {
       if (!('MutationObserver' in window)) return;
-      
+
       const observer = new MutationObserver((mutations) => {
         mutations.forEach(mutation => {
           mutation.addedNodes.forEach(node => {
@@ -1082,8 +1082,75 @@ const App = (() => {
           });
         });
       });
-      
+
       observer.observe(document.body, { childList: true, subtree: true });
+    }
+  };
+
+  // ============================================
+  // TABLE UX MODULE
+  // ============================================
+  const TableUX = {
+    wrapper: null,
+    container: null,
+    scrollHint: null,
+
+    /**
+     * Initialize table UX features
+     */
+    init() {
+      this.wrapper = document.querySelector('.comparison__table-wrapper');
+      this.container = document.querySelector('.comparison__table-container');
+      this.scrollHint = document.querySelector('.comparison__scroll-hint');
+
+      if (!this.wrapper || !this.container) return;
+
+      this.checkScroll();
+      this.bindEvents();
+    },
+
+    /**
+     * Bind scroll events
+     */
+    bindEvents() {
+      this.wrapper.addEventListener('scroll', throttle(() => this.checkScroll(), 50));
+      window.addEventListener('resize', debounce(() => this.checkScroll(), 100));
+
+      // Hide hint on interaction
+      this.wrapper.addEventListener('touchstart', () => {
+        if (this.scrollHint) {
+          this.scrollHint.style.opacity = '0';
+          setTimeout(() => {
+            this.scrollHint.style.display = 'none';
+          }, 300);
+        }
+      }, { passive: true });
+    },
+
+    /**
+     * Check scroll position and toggle shadow/hint
+     */
+    checkScroll() {
+      const scrollLeft = this.wrapper.scrollLeft;
+      const maxScroll = this.wrapper.scrollWidth - this.wrapper.clientWidth;
+
+      // Toggle shadow
+      if (scrollLeft < maxScroll - 10) {
+        this.container.classList.add('show-scroll-shadow');
+      } else {
+        this.container.classList.remove('show-scroll-shadow');
+      }
+
+      // Toggle hint visibility based on checking if scrolling is needed
+      if (maxScroll > 0 && scrollLeft === 0) {
+        if (this.scrollHint && this.scrollHint.style.display !== 'none') {
+          this.scrollHint.style.opacity = '1';
+        }
+      } else {
+        if (this.scrollHint) {
+          this.scrollHint.style.opacity = '0';
+        }
+      }
     }
   };
 
@@ -1107,6 +1174,7 @@ const App = (() => {
     LoadingOverlay.init();
     CookieConsent.init();
     ImageErrorHandler.init();
+    TableUX.init();
 
     // Log initialization
     console.log('🌿 Red Root Java website initialized');
@@ -1137,7 +1205,8 @@ const App = (() => {
     FAQAccordion,
     LoadingOverlay,
     CookieConsent,
-    ImageErrorHandler
+    ImageErrorHandler,
+    TableUX
   };
 })();
 
