@@ -85,6 +85,13 @@ const I18n = (() => {
       'products.mango.variant': 'Manis & Menyegarkan',
       'products.mango.feat1': 'Segar Buah',
       'products.mango.feat2': 'Kaya Vitamin',
+      'products.milky.image': 'Milky Creamy Susu',
+      'products.milky.badge': 'Varian Baru',
+      'products.milky.name': 'Milky',
+      'products.milky.variant': 'Gurih & Creamy Susu',
+      'products.milky.feat1': 'Rasa Gurih',
+      'products.milky.feat2': 'Lembut di Perut',
+      'products.order': 'Pesan Sekarang',
 
       // Benefits Section
       'benefits.subtitle': 'Manfaat Kesehatan',
@@ -144,6 +151,8 @@ const I18n = (() => {
 
       // Navigation
       'nav.faq': 'FAQ',
+      'nav.contact': 'Kontak',
+      'nav.feedback': 'Feedback',
 
       // Comparison Table
       'comparison.subtitle': 'Perbandingan Produk',
@@ -153,6 +162,7 @@ const I18n = (() => {
       'comparison.original': 'Original',
       'comparison.coconut': 'Kelapa Pandan',
       'comparison.mango': 'Mangga',
+      'comparison.milky': 'Milky',
       'comparison.row1': 'Kandungan Jahe Merah',
       'comparison.row2': 'Tanpa Gula Tambahan',
       'comparison.row3': 'Rasa Manis Alami',
@@ -277,6 +287,12 @@ const I18n = (() => {
       'products.mango.variant': 'Sweet & Refreshing',
       'products.mango.feat1': 'Fruity Fresh',
       'products.mango.feat2': 'Vitamin Rich',
+      'products.milky.image': 'Creamy Milky Blend',
+      'products.milky.badge': 'New Variant',
+      'products.milky.name': 'Milky',
+      'products.milky.variant': 'Savory & Milky Creamy',
+      'products.milky.feat1': 'Savory Taste',
+      'products.milky.feat2': 'Gentle on Stomach',
 
       // Benefits Section
       'benefits.subtitle': 'Health Benefits',
@@ -336,6 +352,8 @@ const I18n = (() => {
 
       // Navigation
       'nav.faq': 'FAQ',
+      'nav.contact': 'Contact',
+      'nav.feedback': 'Feedback',
 
       // Comparison Table
       'comparison.subtitle': 'Product Comparison',
@@ -345,6 +363,7 @@ const I18n = (() => {
       'comparison.original': 'Original',
       'comparison.coconut': 'Coconut Pandan',
       'comparison.mango': 'Mango',
+      'comparison.milky': 'Milky',
       'comparison.row1': 'Red Ginger Content',
       'comparison.row2': 'No Added Sugar',
       'comparison.row3': 'Natural Sweetness',

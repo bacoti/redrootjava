@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Berikan feedback Anda untuk Red Root Java. Pertanyaan, saran, atau ulasan produk - suara Anda penting bagi kami.">
+    <meta name="keywords" content="feedback, ulasan, review, Red Root Java, customer feedback">
+    <meta name="author" content="Red Root Java">
+
+    <title>Feedback | Red Root Java - Suara Anda Penting Bagi Kami</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Flaticon UICons -->
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feedback.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <a href="index.html" class="logo" aria-label="Red Root Java Home">
+                <img src="images/logo.png" alt="Red Root Java Logo" class="logo__img">
+                <span class="logo__text">Red Root Java</span>
+            </a>
+
+            <nav class="nav" role="navigation" aria-label="Main Navigation">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Beranda</a></li>
+                    <li><a href="index.html#products" class="nav__link">Produk</a></li>
+                    <li><a href="index.html#testimonials" class="nav__link">Ulasan</a></li>
+                    <li><a href="#" class="nav__link nav__link--active">Feedback</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="menu-toggle__bar"></span>
+                <span class="menu-toggle__bar"></span>
+                <span class="menu-toggle__bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav" role="navigation" aria-label="Mobile Navigation">
+        <a href="index.html#hero" class="bottom-nav__item">
+            <i class="fi fi-rr-home"></i>
+            <span class="bottom-nav__label">Home</span>
+        </a>
+        <a href="index.html#solution" class="bottom-nav__item">
+            <i class="fi fi-rr-apps-sort"></i>
+            <span class="bottom-nav__label">Services</span>
+        </a>
+        <a href="index.html#products" class="bottom-nav__item">
+            <i class="fi fi-rr-box-alt"></i>
+            <span class="bottom-nav__label">Portfolio</span>
+        </a>
+        <a href="feedback.html" class="bottom-nav__item bottom-nav__item--active">
+            <i class="fi fi-rr-envelope"></i>
+            <span class="bottom-nav__label">Contact</span>
+        </a>
+    </nav>
+
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="feedback-hero">
+            <div class="container">
+                <div class="feedback-hero__content">
+                    <span class="feedback-hero__badge">
+                        <i class="fi fi-sr-comment-alt-dots"></i>
+                        Suara Anda Penting
+                    </span>
+                    <h1 class="feedback-hero__title">Berikan Feedback<br><span class="highlight">Untuk Kami</span></h1>
+                    <p class="feedback-hero__subtitle">
+                        Setiap masukan Anda membantu kami menjadi lebih baik. Apakah Anda memiliki pertanyaan,
+                        saran, atau ingin berbagi pengalaman - kami ingin mendengarnya!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flow Selector Section -->
+        <section class="feedback-selector">
+            <div class="container">
+                <h2 class="feedback-selector__title">Pilih Jenis Feedback Anda</h2>
+                <p class="feedback-selector__subtitle">Pilih salah satu yang paling sesuai dengan situasi Anda</p>
+
+                <div class="feedback-selector__cards">
+                    <!-- Pre-Purchase Card -->
+                    <div class="selector-card" data-type="pre_purchase">
+                        <div class="selector-card__icon">
+                            <i class="fi fi-sr-interrogation"></i>
+                        </div>
+                        <h3 class="selector-card__title">Belum Pernah Membeli</h3>
+                        <p class="selector-card__desc">
+                            Saya belum pernah membeli produk Red Root Java dan ingin bertanya atau memberikan saran.
+                        </p>
+                        <ul class="selector-card__list">
+                            <li><i class="fi fi-rr-check"></i> Pertanyaan tentang produk</li>
+                            <li><i class="fi fi-rr-check"></i> Saran untuk website/produk</li>
+                            <li><i class="fi fi-rr-check"></i> Informasi sebelum membeli</li>
+                        </ul>
+                        <button class="btn btn--secondary selector-card__btn">Pilih Ini</button>
+                    </div>
+
+                    <!-- Post-Purchase Card -->
+                    <div class="selector-card selector-card--featured" data-type="post_purchase">
+                        <div class="selector-card__badge">Populer</div>
+                        <div class="selector-card__icon">
+                            <i class="fi fi-sr-star"></i>
+                        </div>
+                        <h3 class="selector-card__title">Sudah Pernah Membeli</h3>
+                        <p class="selector-card__desc">
+                            Saya sudah pernah membeli dan ingin memberikan ulasan atau rating produk.
+                        </p>
+                        <ul class="selector-card__list">
+                            <li><i class="fi fi-rr-check"></i> Rating produk (1-5 bintang)</li>
+                            <li><i class="fi fi-rr-check"></i> Ulasan pengalaman</li>
+                            <li><i class="fi fi-rr-check"></i> Upload foto (opsional)</li>
+                        </ul>
+                        <button class="btn btn--primary selector-card__btn">Pilih Ini</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pre-Purchase Form Section -->
+        <section id="form-pre-purchase" class="feedback-form-section" style="display: none;">
+            <div class="container">
+                <div class="feedback-form-wrapper">
+                    <button class="feedback-back-btn" onclick="showSelector()">
+                        <i class="fi fi-rr-arrow-left"></i> Kembali
+                    </button>
+
+                    <div class="feedback-form-header">
+                        <div class="feedback-form-icon">
+                            <i class="fi fi-sr-interrogation"></i>
+                        </div>
+                        <h2>Pertanyaan & Saran</h2>
+                        <p>Kami senang mendengar dari Anda. Silakan isi form di bawah ini.</p>
+                    </div>
+
+                    <form id="pre-purchase-form" class="feedback-form" novalidate>
+                        <input type="hidden" name="feedback_type" value="pre_purchase">
+
+                        <div class="form-group">
+                            <label for="pre-name" class="form-label">
+                                Nama Lengkap <span class="required">*</span>
+                            </label>
+                            <input type="text" id="pre-name" name="name" class="form-input"
+                                placeholder="Masukkan nama Anda" required>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pre-email" class="form-label">
+                                    Email <span class="optional">(atau WhatsApp)</span>
+                                </label>
+                                <input type="email" id="pre-email" name="email" class="form-input"
+                                    placeholder="email@contoh.com">
+                                <span class="form-error"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pre-phone" class="form-label">
+                                    WhatsApp <span class="optional">(atau Email)</span>
+                                </label>
+                                <input type="tel" id="pre-phone" name="phone" class="form-input"
+                                    placeholder="08xxxxxxxxxx">
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pre-question" class="form-label">
+                                Pertanyaan Anda
+                            </label>
+                            <textarea id="pre-question" name="question" class="form-textarea" rows="4"
+                                placeholder="Tulis pertanyaan Anda tentang produk kami..."></textarea>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pre-suggestion" class="form-label">
+                                Saran untuk Kami
+                            </label>
+                            <textarea id="pre-suggestion" name="suggestion" class="form-textarea" rows="4"
+                                placeholder="Berikan saran untuk website atau produk kami..."></textarea>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pre-source" class="form-label">
+                                Dari mana Anda tahu Red Root Java?
+                            </label>
+                            <select id="pre-source" name="source" class="form-select">
+                                <option value="">Pilih salah satu...</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="google">Google Search</option>
+                                <option value="teman">Rekomendasi Teman/Keluarga</option>
+                                <option value="marketplace">Marketplace (Shopee/Tokopedia)</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--large feedback-submit-btn">
+                            <i class="fi fi-sr-paper-plane"></i>
+                            Kirim Feedback
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post-Purchase Form Section -->
+        <section id="form-post-purchase" class="feedback-form-section" style="display: none;">
+            <div class="container">
+                <div class="feedback-form-wrapper">
+                    <button class="feedback-back-btn" onclick="showSelector()">
+                        <i class="fi fi-rr-arrow-left"></i> Kembali
+                    </button>
+
+                    <div class="feedback-form-header">
+                        <div class="feedback-form-icon feedback-form-icon--star">
+                            <i class="fi fi-sr-star"></i>
+                        </div>
+                        <h2>Ulasan Produk</h2>
+                        <p>Bagikan pengalaman Anda dengan produk Red Root Java!</p>
+                    </div>
+
+                    <form id="post-purchase-form" class="feedback-form" novalidate>
+                        <input type="hidden" name="feedback_type" value="post_purchase">
+
+                        <div class="form-group">
+                            <label for="post-name" class="form-label">
+                                Nama Lengkap <span class="required">*</span>
+                            </label>
+                            <input type="text" id="post-name" name="name" class="form-input"
+                                placeholder="Masukkan nama Anda" required>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="post-email" class="form-label">
+                                    Email <span class="optional">(atau WhatsApp)</span>
+                                </label>
+                                <input type="email" id="post-email" name="email" class="form-input"
+                                    placeholder="email@contoh.com">
+                                <span class="form-error"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="post-phone" class="form-label">
+                                    WhatsApp <span class="optional">(atau Email)</span>
+                                </label>
+                                <input type="tel" id="post-phone" name="phone" class="form-input"
+                                    placeholder="08xxxxxxxxxx">
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-variant" class="form-label">
+                                Varian Produk yang Dibeli <span class="required">*</span>
+                            </label>
+                            <select id="post-variant" name="product_variant" class="form-select" required>
+                                <option value="">Pilih varian...</option>
+                                <option value="original">Original - Jahe Merah Murni</option>
+                                <option value="coconut">Kelapa Pandan - Creamy & Aromatik</option>
+                                <option value="mango">Mangga - Manis & Menyegarkan</option>
+                            </select>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                Rating Produk <span class="required">*</span>
+                            </label>
+                            <div class="star-rating" data-rating="0">
+                                <input type="hidden" name="rating" id="rating-value" value="" required>
+                                <button type="button" class="star-btn" data-value="1" aria-label="1 bintang">
+                                    <i class="fi fi-rr-star"></i>
+                                </button>
+                                <button type="button" class="star-btn" data-value="2" aria-label="2 bintang">
+                                    <i class="fi fi-rr-star"></i>
+                                </button>
+                                <button type="button" class="star-btn" data-value="3" aria-label="3 bintang">
+                                    <i class="fi fi-rr-star"></i>
+                                </button>
+                                <button type="button" class="star-btn" data-value="4" aria-label="4 bintang">
+                                    <i class="fi fi-rr-star"></i>
+                                </button>
+                                <button type="button" class="star-btn" data-value="5" aria-label="5 bintang">
+                                    <i class="fi fi-rr-star"></i>
+                                </button>
+                                <span class="star-rating__text">Klik untuk memberi rating</span>
+                            </div>
+                            <span class="form-error" id="rating-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-review" class="form-label">
+                                Ceritakan Pengalaman Anda <span class="required">*</span>
+                            </label>
+                            <textarea id="post-review" name="review" class="form-textarea" rows="5"
+                                placeholder="Bagaimana pengalaman Anda dengan produk ini? Minimal 20 karakter untuk dapat ditampilkan sebagai testimoni."
+                                required minlength="20"></textarea>
+                            <div class="form-char-count">
+                                <span id="review-char-count">0</span> / 2000 karakter
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                Upload Foto Produk <span class="optional">(opsional)</span>
+                            </label>
+                            <div class="file-upload">
+                                <input type="file" id="post-photo" name="photo" accept="image/jpeg,image/png,image/webp"
+                                    class="file-upload__input">
+                                <label for="post-photo" class="file-upload__label">
+                                    <i class="fi fi-rr-cloud-upload"></i>
+                                    <span class="file-upload__text">Klik atau drag foto di sini</span>
+                                    <span class="file-upload__hint">JPG, PNG, WebP. Maksimal 5MB</span>
+                                </label>
+                                <div class="file-upload__preview" style="display: none;">
+                                    <img src="" alt="Preview" class="file-upload__preview-img">
+                                    <button type="button" class="file-upload__remove" aria-label="Hapus foto">
+                                        <i class="fi fi-rr-cross-small"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" name="allow_display" value="true">
+                                <span class="form-checkbox__mark"></span>
+                                <span class="form-checkbox__text">
+                                    Saya bersedia ulasan saya ditampilkan sebagai testimoni di website
+                                    <small>(Hanya nama depan yang akan ditampilkan)</small>
+                                </span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--large feedback-submit-btn">
+                            <i class="fi fi-sr-paper-plane"></i>
+                            Kirim Ulasan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success State -->
+        <section id="feedback-success" class="feedback-success" style="display: none;">
+            <div class="container">
+                <div class="feedback-success__content">
+                    <div class="feedback-success__icon">
+                        <i class="fi fi-sr-check-circle"></i>
+                    </div>
+                    <h2 class="feedback-success__title">Terima Kasih!</h2>
+                    <p class="feedback-success__message" id="success-message">
+                        Feedback Anda telah berhasil dikirim.
+                    </p>
+                    <div class="feedback-success__actions">
+                        <a href="index.html" class="btn btn--primary">
+                            <i class="fi fi-rr-home"></i> Kembali ke Beranda
+                        </a>
+                        <button class="btn btn--secondary" onclick="resetForm()">
+                            <i class="fi fi-rr-refresh"></i> Kirim Feedback Lain
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2024 Red Root Java. All rights reserved.</p>
+                <div class="footer__social">
+                    <a href="#" aria-label="Instagram"><i class="fi fi-brands-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fi fi-brands-facebook"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fi fi-brands-tik-tok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/feedback.js"></script>
+</body>
+
+</html>

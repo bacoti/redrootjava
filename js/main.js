@@ -119,7 +119,7 @@ const App = (() => {
       DOM.header = document.querySelector('.header');
       DOM.nav = document.querySelector('.nav');
       DOM.menuToggle = document.querySelector('.menu-toggle');
-      DOM.navLinks = document.querySelectorAll('.nav__link');
+      DOM.navLinks = document.querySelectorAll('.nav__link, .bottom-nav__item');
 
       this.bindEvents();
       this.checkScroll();
@@ -232,9 +232,19 @@ const App = (() => {
       DOM.navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === `#${activeSection}`) {
-          addClass(link, 'nav__link--active');
+          if (link.classList.contains('nav__link')) {
+            addClass(link, 'nav__link--active');
+          }
+          if (link.classList.contains('bottom-nav__item')) {
+            addClass(link, 'bottom-nav__item--active');
+          }
         } else {
-          removeClass(link, 'nav__link--active');
+          if (link.classList.contains('nav__link')) {
+            removeClass(link, 'nav__link--active');
+          }
+          if (link.classList.contains('bottom-nav__item')) {
+            removeClass(link, 'bottom-nav__item--active');
+          }
         }
       });
     }
@@ -1225,6 +1235,8 @@ const App = (() => {
     CookieConsent.init();
     ImageErrorHandler.init();
     TableUX.init();
+    DynamicTestimonials.init();
+    ProductModal.init();
 
     // Log initialization
     console.log('🌿 Red Root Java website initialized');
@@ -1236,6 +1248,458 @@ const App = (() => {
   } else {
     init();
   }
+
+  // ============================================
+  // DYNAMIC TESTIMONIALS MODULE
+  // Loads testimonials from API with static fallback
+  // ============================================
+  const DynamicTestimonials = {
+    apiUrl: 'http://localhost:3000/api/testimonials',
+    container: null,
+
+    /**
+     * Initialize dynamic testimonials loading
+     */
+    init() {
+      this.container = document.getElementById('testimonials-grid');
+      if (!this.container) return;
+
+      // Try to load from API
+      this.loadTestimonials();
+    },
+
+    /**
+     * Load testimonials from API
+     */
+    async loadTestimonials() {
+      try {
+        const response = await fetch(this.apiUrl + '?limit=6');
+        const result = await response.json();
+
+        if (result.success && result.data && result.data.length > 0) {
+          this.renderTestimonials(result.data);
+        }
+        // If empty or failed, keep static testimonials
+      } catch (error) {
+        console.log('Using static testimonials (API unavailable)');
+        // Keep static testimonials as fallback
+      }
+    },
+
+    /**
+     * Render testimonials from API data
+     */
+    renderTestimonials(testimonials) {
+      // Clear static testimonials
+      const staticCards = this.container.querySelectorAll('[data-static="true"]');
+      staticCards.forEach(card => card.style.display = 'none');
+
+      // Create dynamic testimonial cards
+      testimonials.forEach(testimonial => {
+        const card = this.createTestimonialCard(testimonial);
+        this.container.insertBefore(card, this.container.firstChild);
+      });
+    },
+
+    /**
+     * Create a testimonial card element
+     */
+    createTestimonialCard(testimonial) {
+      const card = document.createElement('div');
+      card.className = 'testimonial-card';
+      card.setAttribute('data-dynamic', 'true');
+
+      // Generate stars
+      const stars = this.generateStars(testimonial.rating || 5);
+
+      // Get initials for avatar
+      const initials = this.getInitials(testimonial.name);
+
+      // Get display name (first name only for privacy)
+      const displayName = testimonial.name.split(' ')[0];
+
+      // Format variant name
+      const variantNames = {
+        'original': 'Original',
+        'coconut': 'Kelapa Pandan',
+        'mango': 'Mangga'
+      };
+      const variant = variantNames[testimonial.product_variant] || testimonial.product_variant;
+
+      card.innerHTML = `
+        <div class="testimonial-card__stars">
+          ${stars}
+        </div>
+        <p class="testimonial-card__text">
+          "${testimonial.review}"
+        </p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">${initials}</div>
+          <div class="testimonial-card__info">
+            <h4>${displayName}</h4>
+            <p>Pembeli ${variant}</p>
+          </div>
+        </div>
+      `;
+
+      return card;
+    },
+
+    /**
+     * Generate star HTML based on rating
+     */
+    generateStars(rating) {
+      let stars = '';
+      for (let i = 0; i < 5; i++) {
+        if (i < rating) {
+          stars += '<i class="fi fi-sr-star"></i>';
+        } else {
+          stars += '<i class="fi fi-rr-star"></i>';
+        }
+      }
+      return stars;
+    },
+
+    /**
+     * Get initials from name
+     */
+    getInitials(name) {
+      const parts = name.trim().split(' ');
+      if (parts.length >= 2) {
+        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+      }
+      return parts[0].substring(0, 2).toUpperCase();
+    }
+  };
+
+  // ============================================
+  // PRODUCT MODAL MODULE
+  // ============================================
+  const ProductModal = {
+    modal: null,
+    closeBtn: null,
+    backdrop: null,
+    previousFocus: null,
+
+    // Product data for modal
+    products: {
+      original: {
+        name: 'Original',
+        variant: 'Bubuk Jahe Merah Murni',
+        image: 'images/original_ginger.png',
+        badge: 'Terlaris',
+        discount: '-31%',
+        price: 'Rp 45.000',
+        oldPrice: 'Rp 65.000',
+        savings: 'Hemat Rp 20.000',
+        rating: 5,
+        ratingCount: 128,
+        description: 'Jahe merah murni tanpa campuran gula atau bahan tambahan lainnya. Dibuat dari jahe merah pilihan yang diproses dengan teknologi modern untuk mempertahankan khasiat aslinya. Cocok untuk Anda yang menginginkan manfaat maksimal dari jahe merah.',
+        features: [
+          'Tanpa Gula Tambahan',
+          'Khasiat Maksimal',
+          '100% Jahe Merah Murni',
+          'Cocok untuk Diet',
+          'Menghangatkan Tubuh',
+          'Meningkatkan Imun'
+        ],
+        weight: '150g',
+        composition: '100% Jahe Merah'
+      },
+      coconut: {
+        name: 'Kelapa Pandan',
+        variant: 'Perpaduan Tropis Creamy',
+        image: 'images/creamy_coconut_ginger.png',
+        badge: 'Rasa Baru',
+        discount: '-29%',
+        price: 'Rp 50.000',
+        oldPrice: 'Rp 70.000',
+        savings: 'Hemat Rp 20.000',
+        rating: 5,
+        ratingCount: 86,
+        description: 'Kombinasi sempurna antara jahe merah dengan kelapa dan pandan yang memberikan rasa creamy dan aroma yang menggugah selera. Minuman hangat yang memanjakan lidah sekaligus menyehatkan tubuh.',
+        features: [
+          'Rasa Creamy Lembut',
+          'Aroma Pandan Alami',
+          'Kelapa Asli Indonesia',
+          'Perpaduan Tropis',
+          'Mudah Diseduh',
+          'Cocok Segala Usia'
+        ],
+        weight: '150g',
+        composition: 'Jahe Merah, Kelapa, Pandan'
+      },
+      mango: {
+        name: 'Mangga',
+        variant: 'Manis & Menyegarkan',
+        image: 'images/manggo_ginger.png',
+        badge: 'Populer',
+        discount: '-29%',
+        price: 'Rp 50.000',
+        oldPrice: 'Rp 70.000',
+        savings: 'Hemat Rp 20.000',
+        rating: 5,
+        ratingCount: 95,
+        description: 'Sensasi segar dari perpaduan jahe merah dengan buah mangga pilihan. Rasa manis alami yang menyegarkan membuat minuman ini cocok dinikmati kapan saja. Tinggi vitamin C untuk menjaga daya tahan tubuh.',
+        features: [
+          'Segar Buah Mangga',
+          'Kaya Vitamin C',
+          'Rasa Manis Alami',
+          'Menyegarkan',
+          'Tanpa Pewarna Buatan',
+          'Antioksidan Tinggi'
+        ],
+        weight: '150g',
+        composition: 'Jahe Merah, Mangga'
+      },
+      milky: {
+        name: 'Milky',
+        variant: 'Gurih & Creamy Susu',
+        image: 'images/milky_ginger.png',
+        badge: 'Varian Baru',
+        discount: '-29%',
+        price: 'Rp 50.000',
+        oldPrice: 'Rp 70.000',
+        savings: 'Hemat Rp 20.000',
+        rating: 5,
+        ratingCount: 95,
+        description: 'Rasakan tekstur lembut dan rasa gurih perpaduan jahe merah dengan susu berkualitas. Cocok dinikmati saat bersantai dengan rasa yang nyaman di perut. Pas sebagai relaksasi di malam hari.',
+        features: [
+          'Rasa Gurih',
+          'Lembut di Perut',
+          'Susu Berkualitas',
+          'Tanpa Pengawet',
+          'Gampang Larut',
+          'Nikmat Diseduh Hangat'
+        ],
+        weight: '150g',
+        composition: 'Jahe Merah, Susu Nabati'
+      }
+    },
+
+    /**
+     * Initialize product modal
+     */
+    init() {
+      this.modal = document.getElementById('productModal');
+      this.closeBtn = document.getElementById('modalClose');
+      this.backdrop = document.querySelector('.product-modal__backdrop');
+
+      if (!this.modal) return;
+
+      this.bindEvents();
+    },
+
+    /**
+     * Bind modal events
+     */
+    bindEvents() {
+      // Product card clicks
+      const productCards = document.querySelectorAll('.product-card[data-product]');
+      productCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          // Don't open modal if clicking on CTA button
+          if (e.target.closest('.product-card__cta')) return;
+
+          const productId = card.dataset.product;
+          this.open(productId);
+        });
+
+        // Keyboard support
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const productId = card.dataset.product;
+            this.open(productId);
+          }
+        });
+      });
+
+      // Close button
+      if (this.closeBtn) {
+        this.closeBtn.addEventListener('click', () => this.close());
+      }
+
+      // Backdrop click
+      if (this.backdrop) {
+        this.backdrop.addEventListener('click', () => this.close());
+      }
+
+      // Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+          this.close();
+        }
+      });
+
+      // Share button
+      const shareBtn = document.getElementById('modalShareBtn');
+      if (shareBtn) {
+        shareBtn.addEventListener('click', () => this.share());
+      }
+    },
+
+    /**
+     * Open modal with product data
+     */
+    open(productId) {
+      const product = this.products[productId];
+      if (!product) return;
+
+      // Store previous focus
+      this.previousFocus = document.activeElement;
+
+      // Populate modal with product data
+      this.populateModal(product, productId);
+
+      // Show modal
+      this.modal.classList.add('active');
+      this.modal.setAttribute('aria-hidden', 'false');
+
+      // Lock body scroll
+      document.body.style.overflow = 'hidden';
+
+      // Focus close button
+      setTimeout(() => {
+        this.closeBtn.focus();
+      }, 100);
+
+      // Trap focus inside modal
+      this.trapFocus();
+    },
+
+    /**
+     * Close modal
+     */
+    close() {
+      this.modal.classList.remove('active');
+      this.modal.setAttribute('aria-hidden', 'true');
+
+      // Restore body scroll
+      document.body.style.overflow = '';
+
+      // Restore focus
+      if (this.previousFocus) {
+        this.previousFocus.focus();
+      }
+    },
+
+    /**
+     * Populate modal with product data
+     */
+    populateModal(product, productId) {
+      // Image
+      const image = document.getElementById('modalImage');
+      const thumb = document.getElementById('modalThumb1');
+      if (image) {
+        image.src = product.image;
+        image.alt = product.name;
+      }
+      if (thumb) {
+        thumb.src = product.image;
+      }
+
+      // Badge & Discount
+      const badge = document.getElementById('modalBadge');
+      const discount = document.getElementById('modalDiscount');
+      if (badge) badge.textContent = product.badge;
+      if (discount) discount.textContent = product.discount;
+
+      // Rating
+      const ratingCount = document.querySelector('.product-modal__rating-count');
+      if (ratingCount) ratingCount.textContent = `(${product.ratingCount} ulasan)`;
+
+      // Name & Variant
+      const name = document.getElementById('modalProductName');
+      const variant = document.getElementById('modalVariant');
+      if (name) name.textContent = product.name;
+      if (variant) variant.textContent = product.variant;
+
+      // Price
+      const price = document.getElementById('modalPrice');
+      const oldPrice = document.getElementById('modalOldPrice');
+      const savings = document.getElementById('modalSavings');
+      if (price) price.textContent = product.price;
+      if (oldPrice) oldPrice.textContent = product.oldPrice;
+      if (savings) savings.textContent = product.savings;
+
+      // Description
+      const description = document.getElementById('modalDescription');
+      if (description) description.textContent = product.description;
+
+      // Features
+      const featuresList = document.getElementById('modalFeatures');
+      if (featuresList) {
+        featuresList.innerHTML = product.features.map(feat =>
+          `<li><i class="fi fi-sr-check-circle"></i> ${feat}</li>`
+        ).join('');
+      }
+
+      // Info
+      const weight = document.getElementById('modalWeight');
+      const composition = document.getElementById('modalComposition');
+      if (weight) weight.textContent = product.weight;
+      if (composition) composition.textContent = product.composition;
+
+      // Order button (WhatsApp)
+      const orderBtn = document.getElementById('modalOrderBtn');
+      if (orderBtn) {
+        const message = encodeURIComponent(`Halo, saya ingin memesan ${product.name} (${product.price})`);
+        orderBtn.href = `https://wa.me/6281234567890?text=${message}`;
+        orderBtn.target = '_blank';
+      }
+    },
+
+    /**
+     * Share product
+     */
+    share() {
+      const name = document.getElementById('modalProductName');
+      const productName = name ? name.textContent : 'Red Root Java';
+
+      if (navigator.share) {
+        navigator.share({
+          title: productName,
+          text: `Check out ${productName} - Premium Red Ginger Powder`,
+          url: window.location.href
+        }).catch(() => { });
+      } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('Link berhasil disalin!');
+        }).catch(() => {
+          alert('Gagal menyalin link');
+        });
+      }
+    },
+
+    /**
+     * Trap focus inside modal
+     */
+    trapFocus() {
+      const focusableElements = this.modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      this.modal.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+      });
+    }
+  };
 
   // ============================================
   // PUBLIC API
@@ -1256,7 +1720,9 @@ const App = (() => {
     LoadingOverlay,
     CookieConsent,
     ImageErrorHandler,
-    TableUX
+    TableUX,
+    DynamicTestimonials,
+    ProductModal
   };
 })();
 
@@ -1275,3 +1741,48 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// ============================================
+// Initialization is handled internally in App module
+// ============================================
+
+  // ============================================
+  // SMART CTA MODULE
+  // ============================================
+  const SmartCTA = {
+    init() {
+      const ctaButtons = document.querySelectorAll('.smart-cta-btn');
+      const waNumber = '6281234567890'; // Default WA Number if not defined globally
+      
+      ctaButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          let productName = btn.getAttribute('data-product') || 'Red Root Java';
+          let price = 'harga yang tertera';
+
+          // Try to find price context if clicked from card
+          const card = btn.closest('.product-card');
+          if (card) {
+            const priceEl = card.querySelector('.product-card__price-current');
+            if (priceEl) price = priceEl.textContent.trim();
+          } else {
+            // From modal
+            const titleEl = document.getElementById('modalProductName');
+            const modalPrice = document.getElementById('modalPrice');
+            if (titleEl) productName = titleEl.textContent;
+            if (modalPrice) price = modalPrice.textContent;
+          }
+
+          const message = `Halo, saya ingin pesan ${productName} ukuran 150g dengan harga ${price}. Apakah stoknya tersedia?`;
+          const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+          
+          window.open(url, '_blank', 'noopener,noreferrer');
+        });
+      });
+    }
+  };
+  
+  // Init SmartCTA when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    SmartCTA.init();
+  });
