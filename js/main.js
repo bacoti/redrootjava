@@ -113,56 +113,79 @@ const App = (() => {
   // ============================================
   const Navigation = {
     /**
-     * Initialize navigation functionality
+     * Initialize navigation features
      */
     init() {
       DOM.header = document.querySelector('.header');
-      DOM.nav = document.querySelector('.nav');
+      DOM.navLinks = document.querySelectorAll('.nav__link[href^="#"]');
+      DOM.sections = document.querySelectorAll('section[id]');
       DOM.menuToggle = document.querySelector('.menu-toggle');
-      DOM.navLinks = document.querySelectorAll('.nav__link, .bottom-nav__item');
+      DOM.nav = document.querySelector('.nav');
 
-      this.bindEvents();
+      if (!DOM.header) return;
+
       this.checkScroll();
+      this.bindEvents();
+      this.setupIntersectionObserver();
     },
 
     /**
      * Bind navigation events
      */
     bindEvents() {
-      // Menu toggle for mobile
-      if (DOM.menuToggle) {
+      // Mobile menu toggle
+      if (DOM.menuToggle && DOM.nav) {
         DOM.menuToggle.addEventListener('click', () => this.toggleMenu());
       }
 
-      // Close menu when clicking nav links
-      DOM.navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (state.isMenuOpen) {
-            this.closeMenu();
-          }
+      // Close menu on link click
+      if (DOM.navLinks.length > 0) {
+        DOM.navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (state.isMenuOpen) this.toggleMenu();
+          });
         });
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (state.isMenuOpen &&
-          !DOM.nav.contains(e.target) &&
-          !DOM.menuToggle.contains(e.target)) {
-          this.closeMenu();
-        }
-      });
+      }
 
       // Header scroll effect
       window.addEventListener('scroll', throttle(() => {
         this.checkScroll();
-        this.updateActiveLink();
-      }, 10));
+      }, 16), { passive: true });
+    },
 
-      // Close menu on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && state.isMenuOpen) {
-          this.closeMenu();
-        }
+    /**
+     * Setup IntersectionObserver for active navigation links
+     */
+    setupIntersectionObserver() {
+      const options = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.getAttribute('id');
+            DOM.navLinks.forEach(link => {
+              removeClass(link, 'nav__link--active');
+              removeClass(link, 'bottom-nav__item--active');
+              
+              if (link.getAttribute('href') === `#${currentId}`) {
+                if (link.classList.contains('nav__link')) {
+                  addClass(link, 'nav__link--active');
+                }
+                if (link.classList.contains('bottom-nav__item')) {
+                  addClass(link, 'bottom-nav__item--active');
+                }
+              }
+            });
+          }
+        });
+      }, options);
+
+      DOM.sections.forEach(section => {
+        observer.observe(section);
       });
     },
 
@@ -171,23 +194,18 @@ const App = (() => {
      */
     toggleMenu() {
       state.isMenuOpen = !state.isMenuOpen;
+      
+      const isExpanded = state.isMenuOpen;
+      DOM.menuToggle.setAttribute('aria-expanded', isExpanded);
+      
+      toggleClass(DOM.nav, 'nav--active');
       toggleClass(DOM.menuToggle, 'menu-toggle--active');
-      toggleClass(DOM.nav, 'nav--open');
-      toggleClass(document.body, 'no-scroll');
-
-      // Update ARIA attributes
-      DOM.menuToggle.setAttribute('aria-expanded', state.isMenuOpen);
-    },
-
-    /**
-     * Close mobile menu
-     */
-    closeMenu() {
-      state.isMenuOpen = false;
-      removeClass(DOM.menuToggle, 'menu-toggle--active');
-      removeClass(DOM.nav, 'nav--open');
-      removeClass(document.body, 'no-scroll');
-      DOM.menuToggle.setAttribute('aria-expanded', 'false');
+      
+      if (state.isMenuOpen) {
+        addClass(document.body, 'no-scroll');
+      } else {
+        removeClass(document.body, 'no-scroll');
+      }
     },
 
     /**
@@ -195,7 +213,7 @@ const App = (() => {
      */
     checkScroll() {
       const scrollY = window.scrollY;
-
+      
       if (scrollY > CONFIG.scrollThreshold && !state.isScrolled) {
         state.isScrolled = true;
         addClass(DOM.header, 'header--scrolled');
@@ -203,50 +221,8 @@ const App = (() => {
         state.isScrolled = false;
         removeClass(DOM.header, 'header--scrolled');
       }
-
+      
       state.lastScrollY = scrollY;
-    },
-
-    /**
-     * Update active nav link based on scroll position
-     */
-    updateActiveLink() {
-      const sections = document.querySelectorAll('section[id]');
-      const headerHeight = DOM.header ? DOM.header.offsetHeight : 80;
-      const scrollY = window.scrollY + headerHeight + 20;
-
-      let activeSection = null;
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        // Check if section is in the viewport
-        if (scrollY >= sectionTop && scrollY < sectionBottom) {
-          activeSection = sectionId;
-        }
-      });
-
-      // Update nav links
-      DOM.navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === `#${activeSection}`) {
-          if (link.classList.contains('nav__link')) {
-            addClass(link, 'nav__link--active');
-          }
-          if (link.classList.contains('bottom-nav__item')) {
-            addClass(link, 'bottom-nav__item--active');
-          }
-        } else {
-          if (link.classList.contains('nav__link')) {
-            removeClass(link, 'nav__link--active');
-          }
-          if (link.classList.contains('bottom-nav__item')) {
-            removeClass(link, 'bottom-nav__item--active');
-          }
-        }
-      });
     }
   };
 
