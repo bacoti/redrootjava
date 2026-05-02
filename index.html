@@ -29,6 +29,9 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" as="image" href="images/product_new.webp">
 
   <!-- Structured Data - Organization -->
   <script type="application/ld+json">
@@ -161,7 +164,7 @@
   <header class="header" role="banner">
     <div class="header__inner">
       <a href="#" class="logo" aria-label="Red Root Java Home">
-        <img src="images/logo.png" alt="Red Root Java Logo" class="logo__img">
+        <img src="images/logo.png" alt="Red Root Java Logo" class="logo__img" width="120" height="40">
         <span class="logo__text">Red Root Java</span>
       </a>
       
@@ -284,7 +287,7 @@
           
           <div class="hero__visual reveal reveal--right">
             <div class="hero__image-wrapper">
-              <img src="images/product_new.png" alt="Red Root Java Premium Ginger Powder" class="hero__image" loading="eager">
+              <img src="images/product_new.webp" alt="Red Root Java Premium Ginger Powder" class="hero__image" width="600" height="600" loading="eager">
               
               <div class="hero__floating hero__floating--1">
                 <div class="hero__floating-icon"><i class="fi fi-sr-badge-check"></i></div>
@@ -359,7 +362,7 @@
         <div class="solution__inner">
           <div class="solution__image reveal reveal--left">
             <div class="solution__image-wrapper" style="overflow: hidden; border-radius: var(--radius-xl);">
-              <img src="images/product_new.png" alt="Red Root Java Natural Healing Power" class="solution__image-photo" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%238B1A1A%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2220%22%3EImage Not Found%3C/text%3E%3C/svg%3E';">
+              <img src="images/product_new.webp" alt="Red Root Java Natural Healing Power" class="solution__image-photo" width="400" height="400" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%238B1A1A%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2220%22%3EImage Not Found%3C/text%3E%3C/svg%3E';">
             </div>
             <div class="solution__badge">
               <div class="solution__badge-icon"><i class="fi fi-sr-seedling"></i></div>
@@ -429,7 +432,7 @@
           <!-- Original Product -->
           <div class="product-card product-card--original" data-product="original">
             <div class="product-card__image skeleton">
-              <img src="images/original_ginger.png" alt="Red Root Java Original" class="product-card__img" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
+              <img src="images/original_ginger.webp" alt="Red Root Java Original" class="product-card__img" width="300" height="300" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
               <button class="btn--quick-view" aria-label="Lihat Cepat: Original" aria-haspopup="dialog" aria-expanded="false"><i class="fi fi-rr-eye"></i></button>
               <span class="product-card__discount">-31%</span>
               <span class="product-card__badge" data-i18n="products.original.badge">Terlaris</span>
@@ -464,7 +467,7 @@
           <!-- Coconut Pandan Product -->
           <div class="product-card product-card--coconut" data-product="coconut">
             <div class="product-card__image skeleton">
-              <img src="images/creamy_coconut_ginger.png" alt="Red Root Java Coconut Pandan" class="product-card__img" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
+              <img src="images/creamy_coconut_ginger.webp" alt="Red Root Java Coconut Pandan" class="product-card__img" width="300" height="300" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
               <button class="btn--quick-view" aria-label="Lihat Cepat: Kelapa Creamy" aria-haspopup="dialog" aria-expanded="false"><i class="fi fi-rr-eye"></i></button>
               <span class="product-card__discount">-29%</span>
               <span class="product-card__badge" data-i18n="products.coconut.badge">Rasa Baru</span>
@@ -499,7 +502,7 @@
           <!-- Mango Product -->
           <div class="product-card product-card--mango" data-product="mango">
             <div class="product-card__image skeleton">
-              <img src="images/manggo_ginger.png" alt="Red Root Java Mango" class="product-card__img" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
+              <img src="images/manggo_ginger.webp" alt="Red Root Java Mango" class="product-card__img" width="300" height="300" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
               <button class="btn--quick-view" aria-label="Lihat Cepat: Mangga" aria-haspopup="dialog" aria-expanded="false"><i class="fi fi-rr-eye"></i></button>
               <span class="product-card__discount">-29%</span>
               <span class="product-card__badge" data-i18n="products.mango.badge">Populer</span>
@@ -534,7 +537,7 @@
           <!-- Milky Product -->
           <div class="product-card product-card--milky" data-product="milky">
             <div class="product-card__image skeleton">
-              <img src="images/milky_ginger.png" alt="Red Root Java Milky" class="product-card__img" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
+              <img src="images/milky_ginger.webp" alt="Red Root Java Milky" class="product-card__img" width="300" height="300" loading="lazy" onload="this.parentElement.classList.remove('skeleton')" onerror="this.onerror=null; this.parentElement.classList.add('img-error');">
               <button class="btn--quick-view" aria-label="Lihat Cepat: Milky" aria-haspopup="dialog" aria-expanded="false"><i class="fi fi-rr-eye"></i></button>
               <span class="product-card__discount">-29%</span>
               <span class="product-card__badge" data-i18n="products.milky.badge">Varian Baru</span>
@@ -1072,7 +1075,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <img src="images/logo.png" alt="Red Root Java Logo" class="footer__logo-img">
+            <img src="images/logo.png" alt="Red Root Java Logo" class="footer__logo-img" width="120" height="40" loading="lazy">
             <span class="footer__logo-text">Red Root Java</span>
           </div>
           <p class="footer__description" data-i18n="footer.desc">
@@ -1191,7 +1194,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/i18n.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/i18n.js" defer></script>
 </body>
 </html>
