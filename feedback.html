@@ -11,22 +11,19 @@
 
     <title>Feedback | Red Root Java - Suara Anda Penting Bagi Kami</title>
 
-    <!-- Fonts -->
+    <!-- Fonts (Asynchronous) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"></noscript>
 
-    <!-- Flaticon UICons -->
-    <link rel='stylesheet'
-        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet'
-        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <!-- Flaticon UICons (Asynchronous) -->
+    <link rel="preload" as="style" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/feedback.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/feedback.min.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo.png">
@@ -414,7 +411,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/feedback.js" defer></script>
+    <script src="js/feedback.min.js" defer></script>
 </body>
 
 </html>

@@ -14,24 +14,25 @@
   
   <title>Red Root Java | Premium Natural Ginger Powder - Protect Your Body Naturally</title>
   
-  <!-- Fonts -->
+  <!-- Fonts (Asynchronous) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"></noscript>
   
-  <!-- Flaticon UICons -->
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+  <!-- Flaticon UICons (Asynchronous) -->
+  <link rel="preload" as="style" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css" onload="this.onload=null;this.rel='stylesheet'">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.min.css">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png">
   
   <!-- Preload Critical Assets -->
-  <link rel="preload" as="image" href="images/product_new.webp">
+  <link rel="preload" as="image" href="images/product_new_opt.webp">
 
   <!-- Structured Data - Organization -->
   <script type="application/ld+json">
@@ -287,7 +288,7 @@
           
           <div class="hero__visual reveal reveal--right">
             <div class="hero__image-wrapper">
-              <img src="images/product_new.webp" alt="Red Root Java Premium Ginger Powder" class="hero__image" width="600" height="600" loading="eager">
+              <img src="images/product_new_opt.webp" alt="Red Root Java Premium Ginger Powder" class="hero__image" width="600" height="600" loading="eager">
               
               <div class="hero__floating hero__floating--1">
                 <div class="hero__floating-icon"><i class="fi fi-sr-badge-check"></i></div>
@@ -362,7 +363,7 @@
         <div class="solution__inner">
           <div class="solution__image reveal reveal--left">
             <div class="solution__image-wrapper" style="overflow: hidden; border-radius: var(--radius-xl);">
-              <img src="images/product_new.webp" alt="Red Root Java Natural Healing Power" class="solution__image-photo" width="400" height="400" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%238B1A1A%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2220%22%3EImage Not Found%3C/text%3E%3C/svg%3E';">
+              <img src="images/product_new_opt.webp" alt="Red Root Java Natural Healing Power" class="solution__image-photo" width="400" height="400" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%238B1A1A%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22white%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2220%22%3EImage Not Found%3C/text%3E%3C/svg%3E';">
             </div>
             <div class="solution__badge">
               <div class="solution__badge-icon"><i class="fi fi-sr-seedling"></i></div>
@@ -1194,7 +1195,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js" defer></script>
-  <script src="js/i18n.js" defer></script>
+  <script src="js/main.min.js" defer></script>
+  <script src="js/i18n.min.js" defer></script>
 </body>
 </html>

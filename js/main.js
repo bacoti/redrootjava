@@ -319,26 +319,30 @@ const App = (() => {
 
       if (DOM.revealElements.length === 0) return;
 
-      this.checkElements();
-      this.bindEvents();
+      this.setupObserver();
     },
 
     /**
-     * Bind scroll events for reveal
+     * Setup IntersectionObserver for reveal elements
      */
-    bindEvents() {
-      window.addEventListener('scroll', throttle(() => this.checkElements(), 16));
-      window.addEventListener('resize', debounce(() => this.checkElements(), 100));
-    },
+    setupObserver() {
+      const options = {
+        root: null,
+        rootMargin: `0px 0px -${CONFIG.revealOffset}px 0px`,
+        threshold: 0.1
+      };
 
-    /**
-     * Check all reveal elements
-     */
-    checkElements() {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            addClass(entry.target, 'reveal--visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+
       DOM.revealElements.forEach(element => {
-        if (isInViewport(element, CONFIG.revealOffset)) {
-          addClass(element, 'reveal--visible');
-        }
+        observer.observe(element);
       });
     }
   };

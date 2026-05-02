@@ -756,7 +756,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('../images/bg.png') repeat;
+  background: url('../images/bg.webp') repeat;
   background-size: auto;
   opacity: 0.4;
   pointer-events: none;
