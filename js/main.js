@@ -1650,7 +1650,7 @@ const App = (() => {
       const orderBtn = document.getElementById('modalOrderBtn');
       if (orderBtn) {
         const message = encodeURIComponent(`Halo, saya ingin memesan ${product.name} (${product.price})`);
-        orderBtn.href = `https://wa.me/6281234567890?text=${message}`;
+        orderBtn.href = `https://wa.me/6288223917645?text=${message}`;
         orderBtn.target = '_blank';
       }
     },
@@ -1757,7 +1757,7 @@ document.head.appendChild(style);
   const SmartCTA = {
     init() {
       const ctaButtons = document.querySelectorAll('.smart-cta-btn');
-      const waNumber = '6281234567890'; // Default WA Number if not defined globally
+      const waNumber = '6288223917645'; // Default WA Number if not defined globally
       
       ctaButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
