@@ -1326,7 +1326,7 @@ const App = (() => {
       // Format variant name
       const variantNames = {
         'original': 'Original',
-        'coconut': 'Kelapa Pandan',
+        'coconut': 'Kelapa Creamy',
         'mango': 'Mangga'
       };
       const variant = variantNames[testimonial.product_variant] || testimonial.product_variant;
@@ -1412,7 +1412,7 @@ const App = (() => {
         composition: '100% Jahe Merah'
       },
       coconut: {
-        name: 'Kelapa Pandan',
+        name: 'Kelapa Creamy',
         variant: 'Perpaduan Tropis Creamy',
         image: 'images/creamy_coconut_ginger.png',
         badge: 'Rasa Baru',
