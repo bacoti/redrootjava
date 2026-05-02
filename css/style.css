@@ -4082,6 +4082,10 @@ button:focus-visible {
 }
 
 @media (max-width: 768px) {
+  .cookie-consent {
+    bottom: calc(70px + env(safe-area-inset-bottom)); /* Above bottom-nav */
+  }
+
   .cookie-consent__content {
     flex-direction: column;
     text-align: center;
