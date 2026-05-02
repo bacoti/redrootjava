@@ -399,6 +399,155 @@ p {
 }
 
 /* ============================================
+   EXPANDING BUTTON (LEARN MORE)
+   ============================================ */
+.btn-expand {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  border-radius: 50px;
+  min-height: 56px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  border: none;
+  margin-top: var(--space-sm);
+}
+
+.btn-expand__circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50px;
+  background-color: var(--color-primary); /* Sesuai tema website */
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+  z-index: 1;
+}
+
+.btn-expand__icon {
+  position: absolute;
+  left: 28px; /* Fixed anchor at the center of the initial 56px circle */
+  top: 50%;
+  color: var(--color-white);
+  font-size: 1.25rem;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-expand__icon--normal {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.btn-expand__icon--hover {
+  opacity: 0;
+  transform: translate(-100%, -50%); /* Starts slightly left */
+}
+
+.btn-expand__text {
+  padding-left: 72px; /* 56px circle + 16px gap */
+  padding-right: 32px; /* Increased right padding for better balance */
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text); /* Sesuai tema website */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 2;
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  align-items: center;
+  height: 56px;
+  white-space: nowrap;
+}
+
+/* Hover State */
+.btn-expand:hover .btn-expand__circle {
+  width: 100%;
+}
+
+.btn-expand:hover .btn-expand__text {
+  color: var(--color-white);
+}
+
+.btn-expand:hover .btn-expand__icon--normal {
+  opacity: 0;
+  transform: translate(0%, -50%); /* Moves slightly right */
+}
+
+.btn-expand:hover .btn-expand__icon--hover {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* Primary Modifier for Expanding Button */
+.btn-expand--primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 4px 15px rgba(139, 26, 26, 0.3);
+}
+
+.btn-expand--primary .btn-expand__circle {
+  background-color: var(--color-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-expand--primary .btn-expand__icon {
+  color: var(--color-primary);
+}
+
+.btn-expand--primary .btn-expand__text {
+  color: var(--color-white);
+}
+
+.btn-expand--primary:hover {
+  box-shadow: 0 6px 20px rgba(139, 26, 26, 0.4);
+}
+
+.btn-expand--primary:hover .btn-expand__text {
+  color: var(--color-primary);
+}
+
+/* Small Modifier */
+.btn-expand--sm {
+  min-height: 44px;
+}
+
+.btn-expand--sm .btn-expand__circle {
+  width: 44px;
+  height: 44px;
+}
+
+.btn-expand--sm .btn-expand__icon {
+  left: 22px;
+  font-size: 1rem;
+}
+
+.btn-expand--sm .btn-expand__text {
+  padding-left: 56px;
+  padding-right: 24px;
+  height: 44px;
+  font-size: 0.85rem;
+}
+
+/* Full Width Modifier */
+.btn-expand--full {
+  width: 100%;
+}
+
+.btn-expand--full .btn-expand__text {
+  width: 100%;
+  justify-content: center;
+  padding-right: 56px; /* Balance the left padding so it centers */
+}
+
+.btn-expand--full.btn-expand--sm .btn-expand__text {
+  padding-right: 56px;
+}
+
+/* ============================================
    HEADER & NAVIGATION
    ============================================ */
 .header {
@@ -2325,7 +2474,8 @@ p {
     gap: var(--space-md);
   }
 
-  .hero__actions .btn {
+  .hero__actions .btn,
+  .hero__actions .btn-expand {
     width: 100%;
     justify-content: center;
   }

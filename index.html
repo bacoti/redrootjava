@@ -247,11 +247,19 @@
             </p>
             
             <div class="hero__actions">
-              <a href="#products" class="btn btn--primary btn--large btn--pulse" data-i18n="hero.cta1">
-                <i class="fi fi-sr-shield-check"></i> Berhenti Jadi Gampang Sakit
+              <a href="#products" class="btn-expand btn-expand--primary btn--pulse">
+                <span class="btn-expand__circle">
+                  <i class="fi fi-sr-shield-check btn-expand__icon btn-expand__icon--normal"></i>
+                  <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+                </span>
+                <span class="btn-expand__text" data-i18n="hero.cta1">Berhenti Jadi Gampang Sakit</span>
               </a>
-              <a href="#solution" class="btn btn--secondary btn--large" data-i18n="hero.cta2">
-                Pelajari Lebih Lanjut
+              <a href="#solution" class="btn-expand">
+                <span class="btn-expand__circle">
+                  <i class="fi fi-rr-angle-right btn-expand__icon btn-expand__icon--normal"></i>
+                  <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+                </span>
+                <span class="btn-expand__text" data-i18n="hero.cta2">Pelajari Lebih Lanjut</span>
               </a>
             </div>
             
@@ -361,7 +369,7 @@
           
           <div class="solution__content reveal reveal--right">
             <span class="solution__subtitle" data-i18n="solution.subtitle"><i class="fi fi-sr-sparkles"></i> Jawaban Alami</span>
-            <h2 class="solution__title" data-i18n="solution.title">Putus Siklus Sakit-Sakitmu dengan Kekuatan Alami dari Tanah Vulkanik Jawa.</h2>
+            <h2 class="solution__title" data-i18n="solution.title">Putus Siklus Sakit-Sakitmu dengan Kekuatan Alami dari Tanah Jawa.</h2>
             <p class="solution__text" data-i18n="solution.text">
               Jalan keluar dari ketergantungan obat kimia. Kembalikan kendali atas kesehatanmu tanpa risiko efek samping jangka panjang. 100% Organik, murni untuk perisai tubuhmu.
             </p>
@@ -371,7 +379,7 @@
                 <div class="solution__feature-icon"><i class="fi fi-sr-check"></i></div>
                 <div class="solution__feature-content">
                   <h4 data-i18n="solution.feature1.title">Jahe Merah Premium</h4>
-                  <p data-i18n="solution.feature1.text">Bersumber dari dataran tinggi vulkanik Jawa, Indonesia</p>
+                  <p data-i18n="solution.feature1.text">Bersumber dari tanah Jawa, Indonesia</p>
                 </div>
               </div>
               
@@ -922,11 +930,19 @@
           </p>
           
           <div class="cta__buttons">
-            <a href="https://wa.me/6281234567890?text=Hi,%20I'm%20interested%20in%20Red%20Root%20Java%20Ginger%20Powder" class="btn btn--primary btn--large btn--pulse" target="_blank" rel="noopener" data-i18n="cta.whatsapp">
-              <i class="fi fi-brands-whatsapp"></i> Pesan via WhatsApp
+            <a href="https://wa.me/6281234567890?text=Hi,%20I'm%20interested%20in%20Red%20Root%20Java%20Ginger%20Powder" class="btn-expand btn-expand--primary btn--pulse" target="_blank" rel="noopener">
+              <span class="btn-expand__circle">
+                <i class="fi fi-brands-whatsapp btn-expand__icon btn-expand__icon--normal"></i>
+                <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+              </span>
+              <span class="btn-expand__text" data-i18n="cta.whatsapp">Pesan via WhatsApp</span>
             </a>
-            <a href="#products" class="btn btn--secondary btn--large" data-i18n="cta.viewproducts">
-              Lihat Semua Produk
+            <a href="#products" class="btn-expand">
+              <span class="btn-expand__circle">
+                <i class="fi fi-rr-angle-right btn-expand__icon btn-expand__icon--normal"></i>
+                <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+              </span>
+              <span class="btn-expand__text" data-i18n="cta.viewproducts">Lihat Semua Produk</span>
             </a>
           </div>
           
@@ -1021,11 +1037,17 @@
           </div>
 
           <div class="product-modal__actions">
-            <a href="#cta" id="modalOrderBtn" class="btn btn--primary product-modal__order smart-cta-btn">
-              <i class="fi fi-rr-shopping-cart"></i> Pesan Sekarang
+            <a href="#cta" id="modalOrderBtn" class="btn-expand btn-expand--primary btn-expand--sm product-modal__order smart-cta-btn">
+              <span class="btn-expand__circle">
+                <i class="fi fi-rr-shopping-cart btn-expand__icon btn-expand__icon--normal"></i>
+                <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+              </span>
+              <span class="btn-expand__text">Pesan Sekarang</span>
             </a>
-            <button id="modalShareBtn" class="btn btn--outline product-modal__share" aria-label="Bagikan">
-              <i class="fi fi-rr-share"></i>
+            <button id="modalShareBtn" class="btn-expand btn-expand--sm product-modal__share" aria-label="Bagikan" style="width: 44px; padding: 0;">
+              <span class="btn-expand__circle">
+                <i class="fi fi-rr-share btn-expand__icon btn-expand__icon--normal"></i>
+              </span>
             </button>
           </div>
           
@@ -1162,8 +1184,20 @@
         <p id="cookieDesc" data-i18n="cookie.text">Website ini menggunakan cookies untuk meningkatkan pengalaman Anda. Dengan melanjutkan, Anda menyetujui penggunaan cookies.</p>
       </div>
       <div class="cookie-consent__actions">
-        <button class="btn btn--secondary cookie-consent__btn" id="cookieDecline" data-i18n="cookie.decline">Tolak</button>
-        <button class="btn btn--primary cookie-consent__btn" id="cookieAccept" data-i18n="cookie.accept">Terima</button>
+        <button class="btn-expand btn-expand--sm cookie-consent__btn" id="cookieDecline">
+          <span class="btn-expand__circle">
+            <i class="fi fi-rr-cross btn-expand__icon btn-expand__icon--normal"></i>
+            <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+          </span>
+          <span class="btn-expand__text" data-i18n="cookie.decline">Tolak</span>
+        </button>
+        <button class="btn-expand btn-expand--primary btn-expand--sm cookie-consent__btn" id="cookieAccept">
+          <span class="btn-expand__circle">
+            <i class="fi fi-rr-check btn-expand__icon btn-expand__icon--normal"></i>
+            <i class="fi fi-rr-arrow-right btn-expand__icon btn-expand__icon--hover"></i>
+          </span>
+          <span class="btn-expand__text" data-i18n="cookie.accept">Terima</span>
+        </button>
       </div>
     </div>
   </div>
