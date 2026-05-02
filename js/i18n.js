@@ -18,6 +18,7 @@ const I18n = (() => {
       'nav.products': 'Produk',
       'nav.benefits': 'Manfaat',
       'nav.reviews': 'Ulasan',
+      'nav.howtouse': 'Cara',
       'nav.order': 'Pesan Sekarang',
 
       // Hero Section
@@ -27,8 +28,8 @@ const I18n = (() => {
       'hero.subtitle': 'Sering merasa lelah dan mudah tumbang hanya karena cuaca berubah? Itu bukan sekadar kurang istirahat. Itu alarm bahaya dari sistem imunmu yang sedang kebobolan. Mengabaikannya sekarang, berarti bersiap untuk biaya rumah sakit yang mahal esok hari.',
       'hero.cta1': 'Berhenti Jadi Gampang Sakit',
       'hero.cta2': 'Pelajari Lebih Lanjut',
-      'hero.stat1': 'Pelanggan Puas',
-      'hero.stat2': '% Alami',
+      'hero.stat1': 'Keluarga Terlindungi',
+      'hero.stat2': 'Alami & Murni',
       'hero.stat3': 'Tahun Dipercaya',
       'hero.product': 'Bubuk Jahe Premium',
       'hero.certified': 'Tersertifikasi',
@@ -220,6 +221,7 @@ const I18n = (() => {
       'nav.products': 'Products',
       'nav.benefits': 'Benefits',
       'nav.reviews': 'Reviews',
+      'nav.howtouse': 'Serve',
       'nav.order': 'Order Now',
 
       // Hero Section
@@ -229,8 +231,8 @@ const I18n = (() => {
       'hero.subtitle': 'A weak body is not a coincidence — it\'s a warning. Your immune system is crying for help, and ignoring it could cost you more than just sick days.',
       'hero.cta1': 'Protect My Body Now',
       'hero.cta2': 'Learn More',
-      'hero.stat1': 'Happy Customers',
-      'hero.stat2': '% Natural',
+      'hero.stat1': 'Families Protected',
+      'hero.stat2': 'Pure & Natural',
       'hero.stat3': 'Years Trusted',
       'hero.product': 'Premium Ginger Powder',
       'hero.certified': 'Certified',

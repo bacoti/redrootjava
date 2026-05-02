@@ -419,17 +419,22 @@ const App = (() => {
      */
     animateCounter(element) {
       const target = parseInt(element.getAttribute('data-counter'));
+      const suffix = element.getAttribute('data-suffix') || '';
       const duration = 2000;
       const step = target / (duration / 16);
       let current = 0;
 
+      const formatNumber = (num) => {
+        return Math.floor(num).toLocaleString('id-ID');
+      };
+
       const update = () => {
         current += step;
         if (current < target) {
-          element.textContent = Math.floor(current);
+          element.innerHTML = formatNumber(current) + (suffix ? `<span class="unit">${suffix}</span>` : '');
           requestAnimationFrame(update);
         } else {
-          element.textContent = target;
+          element.innerHTML = formatNumber(target) + (suffix ? `<span class="unit">${suffix}</span>` : '');
         }
       };
 
