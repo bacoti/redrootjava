@@ -1517,7 +1517,7 @@ const App = (() => {
           'Menghangatkan Tubuh',
           'Meningkatkan Imun'
         ],
-        weight: '150g',
+        weight: '100 gram',
         composition: '100% Jahe Merah'
       },
       coconut: {
@@ -1540,7 +1540,7 @@ const App = (() => {
           'Mudah Diseduh',
           'Cocok Segala Usia'
         ],
-        weight: '150g',
+        weight: '100 gram',
         composition: 'Jahe Merah, Kelapa, Pandan'
       },
       mango: {
@@ -1563,7 +1563,7 @@ const App = (() => {
           'Tanpa Pewarna Buatan',
           'Antioksidan Tinggi'
         ],
-        weight: '150g',
+        weight: '100 gram',
         composition: 'Jahe Merah, Mangga'
       },
       milky: {
@@ -1586,7 +1586,7 @@ const App = (() => {
           'Gampang Larut',
           'Nikmat Diseduh Hangat'
         ],
-        weight: '150g',
+        weight: '100 gram',
         composition: 'Jahe Merah, Susu Nabati'
       }
     },
@@ -1888,7 +1888,7 @@ document.head.appendChild(style);
             if (modalPrice) price = modalPrice.textContent;
           }
 
-          const message = `Halo, saya ingin pesan ${productName} ukuran 150g dengan harga ${price}. Apakah stoknya tersedia?`;
+          const message = `Halo, saya ingin pesan ${productName} ukuran 100 gram dengan harga ${price}. Apakah stoknya tersedia?`;
           const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
           
           window.open(url, '_blank', 'noopener,noreferrer');
