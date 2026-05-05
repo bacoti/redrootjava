@@ -1,0 +1,19 @@
+{
+  "name": "redrootjava",
+  "version": "1.0.0",
+  "description": "Red Root Java - Premium Natural Ginger Powder",
+  "scripts": {
+    "dev": "echo 'Static HTML site - open index.html in browser'",
+    "build": "echo 'No build step required for static HTML'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  },
+  "keywords": [
+    "ginger",
+    "health",
+    "natural"
+  ],
+  "author": "Red Root Java",
+  "license": "MIT"
+}
