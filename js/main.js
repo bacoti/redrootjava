@@ -843,6 +843,134 @@ const App = (() => {
   };
 
   // ============================================
+  // FLOATING ACTION MENU MODULE
+  // ============================================
+  const FloatingActionMenu = {
+    menu: null,
+    toggle: null,
+    backdrop: null,
+    items: null,
+    isOpen: false,
+    closeTimeout: null,
+
+    /**
+     * Initialize floating action menu
+     */
+    init() {
+      this.menu = document.getElementById('floatingActionMenu');
+      this.toggle = document.getElementById('floatingActionToggle');
+      this.backdrop = document.getElementById('floatingActionBackdrop');
+      this.items = document.querySelectorAll('.floating-action-item');
+
+      if (!this.menu || !this.toggle) return;
+
+      this.bindEvents();
+      this.setupDesktopHover();
+    },
+
+    /**
+     * Bind events
+     */
+    bindEvents() {
+      // Toggle button click
+      this.toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.toggleMenu();
+      });
+
+      // Backdrop click to close
+      if (this.backdrop) {
+        this.backdrop.addEventListener('click', () => this.closeMenu());
+      }
+
+      // Item clicks
+      this.items.forEach(item => {
+        item.addEventListener('click', () => {
+          // Close menu after clicking item
+          this.closeMenu();
+        });
+      });
+
+      // Close menu when scrolling
+      window.addEventListener('scroll', () => this.closeMenu(), { passive: true });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.closeMenu();
+        }
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (this.isOpen && !this.menu.contains(e.target)) {
+          this.closeMenu();
+        }
+      });
+    },
+
+    /**
+     * Setup hover behavior for desktop
+     */
+    setupDesktopHover() {
+      // Only activate hover on devices with hover capability
+      const mediaQuery = window.matchMedia('(hover: hover)');
+      
+      if (mediaQuery.matches) {
+        this.menu.addEventListener('mouseenter', () => {
+          // Optional: auto-open on hover
+        });
+
+        this.menu.addEventListener('mouseleave', () => {
+          // Optional: auto-close on hover out (uncomment if desired)
+          // this.closeMenu();
+        });
+      }
+    },
+
+    /**
+     * Toggle menu open/close
+     */
+    toggleMenu() {
+      if (this.isOpen) {
+        this.closeMenu();
+      } else {
+        this.openMenu();
+      }
+    },
+
+    /**
+     * Open menu
+     */
+    openMenu() {
+      if (this.isOpen) return;
+
+      this.menu.classList.add('active');
+      this.toggle.setAttribute('aria-expanded', 'true');
+      this.isOpen = true;
+
+      // Clear any pending close timeout
+      if (this.closeTimeout) {
+        clearTimeout(this.closeTimeout);
+      }
+    },
+
+    /**
+     * Close menu
+     */
+    closeMenu() {
+      if (!this.isOpen) return;
+
+      // Use small delay to allow click on items to process
+      this.closeTimeout = setTimeout(() => {
+        this.menu.classList.remove('active');
+        this.toggle.setAttribute('aria-expanded', 'false');
+        this.isOpen = false;
+      }, 50);
+    }
+  };
+
+  // ============================================
   // FAQ ACCORDION MODULE
   // ============================================
   const FAQAccordion = {
@@ -1215,6 +1343,7 @@ const App = (() => {
     Parallax.init();
     MouseParallax.init();
     BackToTop.init();
+    FloatingActionMenu.init();
     FAQAccordion.init();
     LoadingOverlay.init();
     CookieConsent.init();
@@ -1701,6 +1830,7 @@ const App = (() => {
     Accessibility,
     Parallax,
     BackToTop,
+    FloatingActionMenu,
     FAQAccordion,
     LoadingOverlay,
     CookieConsent,
